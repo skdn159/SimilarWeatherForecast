@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Measuring page</title>
+	<script type="text/javascript">
+		function onBack(){
+			window.location.href="/main";
+		}
+		function onResult(){
+			window.location.href="/measure/result";			
+		}
+		function onChange() {
+			var btnModel = document.getElementById("btnModel")
+
+			if(btnModel.value == "MLP") {
+				btnModel.value = "Logistics";
+				document.getElementById("imgForLogistic").style.display="none";
+				document.getElementById("model1_3").innerHTML={{resMLP3}};
+				document.getElementById("model1_5").innerHTML={{resMLP5}};
+				document.getElementById("model1_7").innerHTML={{resMLP7}};
+				document.getElementById("model1_9").innerHTML={{resMLP9}};
+			} else {
+				btnModel.value = "MLP";
+				document.getElementById("imgForLogistic").style.display="inline";
+				document.getElementById("model1_3").innerHTML={{pred3year}};
+				document.getElementById("model1_5").innerHTML={{pred5year}};
+				document.getElementById("model1_7").innerHTML={{pred7year}};
+				document.getElementById("model1_9").innerHTML={{pred9year}};
+
+			}
+		}
+
+	</script>
+	<style type="text/css">
+		body {
+			width : 1000px;
+			height : 800px;
+			margin : 20px;
+		}
+		.container {
+			width: 870px; 
+			height: 550px;
+			padding: 5px;
+			border: 3px solid;
+		}
+
+
+		input[type="text"] {
+		    width: 120px;
+		    border: 1px solid #d6d6d6;
+		    padding: 2px;
+		    outline: none;
+		}
+		
+		table {
+		    border-spacing: 2px;
+			width: 820px;
+			height: 50px;
+			left: 3px;
+		    border-color: black;
+			margin-top: 70px;
+		}
+
+		th, td {
+			    padding: 5px 30px 5px 10px;
+		}
+
+		th {
+			width: 200px;
+		    text-align: left;
+		    background-color: #e0e9f0;
+		    border-top: 1px solid #f1f8fe;
+		    border-bottom: 1px solid #cbd2d8;
+		    border-right: 1px solid #cbd2d8;
+
+		}
+
+		td {
+			text-align: right;
+			background-color: #f1f8fe;
+		}
+
+	
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header" style="position: absolute; width: 850px; height: 50px; border-bottom: 3px solid; margin: 0px;">
+			<p style="float: left; margin: 0px; width: 600px; text-align: left; font-size: 30px; font-weight: 100"><strong>구로 병원 로지스틱 계산 시스템</strong></p>
+			<input type="button" value="홈으로" onClick="onBack()" style="float: right;">
+			
+
+		</div>
+		<input type="button" id="btnModel" style="position: absolute; top: 80px;" onclick="onChange()" value="MLP"></input>
+		<table>
+			<tr>
+				<th></th>
+				<th>3년후</th>
+				<th>5년후</th>
+				<th>7년후</th>
+				<th>9년후</th>
+			</tr>
+			<tr>
+				<th>
+					고혈압(모델1)
+				</th>
+				<td>
+					<div id="model1_3">{{pred3year}}</div>
+				</td>
+				<td>
+					<div id="model1_5">{{pred5year}}</div>
+				</td>
+				<td>
+					<div id="model1_7">{{pred7year}}</div>
+				</td>
+				<td>
+					<div id="model1_9">{{pred9year}}</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>
+					고혈압(모델2)
+				</th>
+				<td>
+					??
+				</td>
+				<td>
+					??
+				</td>
+				<td>
+					??
+				</td>
+				<td>
+					??
+				</td>
+			</tr>			
+		</table>
+		<img id="imgForLogistic" src="data:image/png;base64,{{ result }}" width="400" >
+</body>
+</html>
