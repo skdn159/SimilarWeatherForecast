@@ -15,6 +15,10 @@ app.secret_key = 'secret'
 def showMainPage():
 	return render_template("main.html")
 
+@app.route("/result")
+def showResultPage():
+	return render_template("result.html")
+
 
 # 메인 화면
 #@app.route("/main")

@@ -1,27 +1,22 @@
 body {
-	width : 800px;
-	height : 650px;
+	width : 1500px;
+	height : 1250px;
 	margin : 20px;
 }
+img.left {
+	float:left;
+	width: 10px;
+	height: 10px;
+	top : 500px;
+}
 img.medium {
-	float : left;
-	position: absolute;
-	width  : 600px;
-	height : 500px;			
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
+	height: 100px;
 }
-ul.navbar {
-	background-color: #FFFFFF;
-	list-style-type: none;
-	float : right;
-	position: absolute;
-	width : 150px;
-	height : 500px;
-	padding : 0px;
-	margin-top: 0px;
-	margin-left: 570px;
-}
+img.right {
+	float:right;
 
-ul.navbar li{
-	margin : 1em;
-	padding: 0.3em;
 }

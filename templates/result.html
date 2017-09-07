@@ -2,142 +2,35 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Measuring page</title>
-	<script type="text/javascript">
-		function onBack(){
-			window.location.href="/main";
-		}
-		function onResult(){
-			window.location.href="/measure/result";			
-		}
-		function onChange() {
-			var btnModel = document.getElementById("btnModel")
-
-			if(btnModel.value == "MLP") {
-				btnModel.value = "Logistics";
-				document.getElementById("imgForLogistic").style.display="none";
-				document.getElementById("model1_3").innerHTML={{resMLP3}};
-				document.getElementById("model1_5").innerHTML={{resMLP5}};
-				document.getElementById("model1_7").innerHTML={{resMLP7}};
-				document.getElementById("model1_9").innerHTML={{resMLP9}};
-			} else {
-				btnModel.value = "MLP";
-				document.getElementById("imgForLogistic").style.display="inline";
-				document.getElementById("model1_3").innerHTML={{pred3year}};
-				document.getElementById("model1_5").innerHTML={{pred5year}};
-				document.getElementById("model1_7").innerHTML={{pred7year}};
-				document.getElementById("model1_9").innerHTML={{pred9year}};
-
-			}
-		}
-
-	</script>
-	<style type="text/css">
-		body {
-			width : 1000px;
-			height : 800px;
-			margin : 20px;
-		}
-		.container {
-			width: 870px; 
-			height: 550px;
-			padding: 5px;
-			border: 3px solid;
-		}
-
-
-		input[type="text"] {
-		    width: 120px;
-		    border: 1px solid #d6d6d6;
-		    padding: 2px;
-		    outline: none;
-		}
-		
-		table {
-		    border-spacing: 2px;
-			width: 820px;
-			height: 50px;
-			left: 3px;
-		    border-color: black;
-			margin-top: 70px;
-		}
-
-		th, td {
-			    padding: 5px 30px 5px 10px;
-		}
-
-		th {
-			width: 200px;
-		    text-align: left;
-		    background-color: #e0e9f0;
-		    border-top: 1px solid #f1f8fe;
-		    border-bottom: 1px solid #cbd2d8;
-		    border-right: 1px solid #cbd2d8;
-
-		}
-
-		td {
-			text-align: right;
-			background-color: #f1f8fe;
-		}
-
+	<title>유사기상도</title>
 	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/hello.css') }}">
 
-	</style>
+
 </head>
 <body>
-	<div class="container">
-		<div class="header" style="position: absolute; width: 850px; height: 50px; border-bottom: 3px solid; margin: 0px;">
-			<p style="float: left; margin: 0px; width: 600px; text-align: left; font-size: 30px; font-weight: 100"><strong>구로 병원 로지스틱 계산 시스템</strong></p>
-			<input type="button" value="홈으로" onClick="onBack()" style="float: right;">
-			
+	<div style="height: 800px; width: 1500px; border: 3px solid black">
+		
+		<p>날짜 입력</p>
+		<div><input type="date" id="userdate" name="userdate" value="2017-9-1"></div>
+		<div><input type="text" name="time"></div>
+		
+			<div><input type="submit" value="입력"></div>
+			<div><img src="{{url_for('static', filename='images/H500/2016/10/era_easia_h500_anal.2016102318_s2.png')}}" 
+			 style="max-width: 30%; height: auto; top:80%; left:10%;">
+			 <!--<img src="{{url_for('static', filename='images/H500/2016/10/era_easia_h500_anal.2016102318_s2.png')}}" class = "left"
+			 style="max-width: 30%; height: auto;">-->
+			<img src="{{url_for('static', filename='images/H100/2016/10/era_easia_h100_anal.2016101118_s2.png')}}" 
+			style="max-width: 30%; height: auto; left:40%;">
+			<img src="{{url_for('static', filename='images/H500/2016/10/era_easia_h500_anal.2016102418_s2.png')}}" 
+			style="max-width: 30%; height: auto; left:70%;"></div>
 
-		</div>
-		<input type="button" id="btnModel" style="position: absolute; top: 80px;" onclick="onChange()" value="MLP"></input>
-		<table>
-			<tr>
-				<th></th>
-				<th>3년후</th>
-				<th>5년후</th>
-				<th>7년후</th>
-				<th>9년후</th>
-			</tr>
-			<tr>
-				<th>
-					고혈압(모델1)
-				</th>
-				<td>
-					<div id="model1_3">{{pred3year}}</div>
-				</td>
-				<td>
-					<div id="model1_5">{{pred5year}}</div>
-				</td>
-				<td>
-					<div id="model1_7">{{pred7year}}</div>
-				</td>
-				<td>
-					<div id="model1_9">{{pred9year}}</div>
-				</td>
-			</tr>
+			<div style="float:left; color :black; padding:20px 20px 0px 145px; ">2016년 10월 08일 16시</div>
+			<div style="float:left; color :black; padding:20px 20px 0px 265px; ">2016년 10월 11일 15시</div>
+			<div style="float:left; color :black; padding:20px 20px 0px 275px; ">2016년 10월 12일 11시</div>
 			
-			<tr>
-				<th>
-					고혈압(모델2)
-				</th>
-				<td>
-					??
-				</td>
-				<td>
-					??
-				</td>
-				<td>
-					??
-				</td>
-				<td>
-					??
-				</td>
-			</tr>			
-		</table>
-		<img id="imgForLogistic" src="data:image/png;base64,{{ result }}" width="400" >
+			
+	</div>
 </body>
+
 </html>
